@@ -1,0 +1,96 @@
+<devices>
+   <form>
+      <input type="text" id="username">
+      <input type="text" id="password">
+      <button id="show" value="Show" class="btn btn-info">Show</button>
+
+   </form>
+
+   <table class="table table-hover" if={devices.length}>
+
+      <th scope="col">Name</th>
+      <th scope="col">Status</th>
+      <th scope="col">Tracking</th>
+      <th scope="col">Version</th>
+
+      <tr each="{device in devices}">
+         <td>
+            {device.name}
+         </td>
+         <td>
+            <details>
+               <summary>Status </summary>
+               <ul>
+                  <li>group: {device.status.group}</li>
+                  <li>ioName: {device.status.ioName}</li>
+                  <li>status: {device.status.status}</li>
+                  <li>time: {device.status.time}</li>
+                  <li>version: {device.status.version}</li>
+               </ul>
+            </details>
+         </td>
+         <td>
+            <details>
+               <summary>Tracking </summary>
+               <ul>
+                  <li>alt: {device.tracking.data.alt}</li>
+                  <li>battery: {device.tracking.data.battery}</li>
+                  <li>extbattery: {device.tracking.data.extbattery}</li>
+                  <li>gps: {device.tracking.data.gps}</li>
+                  <li>loc0: {device.tracking.data.loc.0}</li>
+                  <li>loc1: {device.tracking.data.loc.1}</li>
+               </ul>
+            </details>
+         </td>
+         <td>
+            {device.version}
+         </td>
+      </tr>
+      <tr if={!devices.length}>
+         <td>No hay devices</td>
+      </tr>
+
+      <th scope="row">Status</th>
+      <th scope="row">Name</th>
+      <th scope="row">Name</th>
+
+   </table>
+
+<script>
+      this.devices = []
+
+      var username;
+      var password;
+
+      function make_base_auth(user, password) {
+         var tok = user + ':' + password;
+         var hash = btoa(tok);
+         return "Basic " + hash;
+      }
+
+
+      this.on('mount', () => {
+         $('#show').on("click", (e) => {
+            e.preventDefault();
+            $.ajax({
+               type: "get",
+               beforeSend: function (xhr) {
+                  xhr.setRequestHeader("Authorization", make_base_auth(username, password));
+               },
+               url: "https://api.m2msystemsource.com/v1/devices",
+               dataType: 'json',
+               success: (response) => {
+                  console.log('testeo', this)
+                  this.devices = response
+                  this.update();
+
+               }
+            });
+         })
+
+         username = $("input#username").val();
+         password = $("input#password").val();
+      })
+   </script>
+
+</devices>

@@ -1,0 +1,27 @@
+{
+  "name": "my-riot-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "start": "concurrently 'npm run serve' 'npm run watch'",
+    "serve": "nodemon server.js",
+    "watch": "npm run build -- -w",
+    "build": "riot --config riot.config",
+    "pre-deploy": "cp -cp node_modules/{page.js/page.js,riot/riot.min.js} src/js/vendors/"
+  },
+  "author": "Vincent Agnano",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "jquery": "^3.3.1",
+    "page.js": "*",
+    "riot": "*",
+    "riotjs": "^1.0.4"
+  },
+  "devDependencies": {
+    "concurrently": "*",
+    "express": "*",
+    "nodemon": "*"
+  }
+}

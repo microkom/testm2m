@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>Testing</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="src/css/bootstrap/dist/css/bootstrap.min.css">
+      <script src="src/js/vendors/jquery.js"></script>
+      <style type="text/css">
+         * {
+            box-sizing: border-box;
+         }
+         body {
+            margin: 0;
+            padding: 0;
+            height: 99vh;
+         }
+
+         devices {
+            min-height: 100vh;
+         }
+      </style>
+   </head>
+
+
+   <body>
+      <main class="container">
+         <devices></devices>
+      </main>
+
+      <script src="src/components/devices.html" type="riot/tag"></script>
+
+      <script src="src/js/vendors/riot.min.js"></script>
+
+      <script src="src/js/vendors/page.js"></script>
+      <script src="src/js/utils.js"></script>
+      <script src="dist/components.js"></script>
+
+      <script type="application/javascript">
+         riot.mount('*')
+      </script>   
+
+
+   </body>
+
+</html>
