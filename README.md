@@ -1,16 +1,20 @@
-# Eurordis Contact-Database
+# M2M API data download
 
+## Overview
 
-## Global functions
+This will show a list of the last 50 components in the M2M server with all its characteristics.
 
-- `request()`: a global function wrapping _fetch_ for calling APIs. Returns a JSON content when available, text otherwise.
+## Before starting
+
+Run 
+- `npm install`: download all necessary included components.
+- `npm run build`: build the components for production into _dist/components.js_
 
 
 ## Commands
 
 - `npm start`: run the server and watch for files change. Perfect for development.
 - `npm run watch`: watch for any component file change in _src/components_ and rebuild into _dist/components.js_.
-- `npm build`: build the components for production into _dist/components.js_
 - `npm run pre-deploy`: copies the required assets from node modules into the vendors folder
 
 
