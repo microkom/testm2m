@@ -1,23 +1,6 @@
 :root {
   --primary-color: #06c;
 }
-fieldset { 
-  display: block;
-  margin-left: 1em;
-  margin-right: 1em;
-  padding-top: 1em;
-  padding-bottom: 1em;
-  padding-left: 1em;
-  padding-right: 3em;
-  width: 100%;
-  /* border: 2px groove (internal value); */
-}
-input{
-  padding: 12px !important;
-  display:inline-block !important;
-  width: 25% !important;
-}
-
 
 @font-face {
     font-family: 'Open Sans';
